@@ -1,3 +1,5 @@
+import json
+
 def index(pages):
     index_data = {}
 
@@ -14,3 +16,11 @@ def index(pages):
                     index_data[word][url] = {"frequency": 1, "positions": [position]}      
 
     return index_data
+
+def save_index(index_data, filepath):
+    with open(filepath, "w") as f:
+        json.dump(index_data, f, indent=4)
+
+def load_index(filepath):
+    with open(filepath, "r") as f:
+        return json.load(f)        
