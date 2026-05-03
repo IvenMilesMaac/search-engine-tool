@@ -1,5 +1,6 @@
 from crawler import crawl
 from indexer import index, save_index, load_index
+from search import print_results, find_word
 
 BASE_URL = "https://quotes.toscrape.com"
 INDEX_FILEPATH = "data/index.json"
@@ -32,10 +33,28 @@ def main():
                     print("No index found. Please run 'build' first.")
 
             case "print":
-                pass
+                if len(parts) < 2:
+                    print("Please provide a word to print.")
+                    continue
+                if index_data is None:
+                    print("No index found. Please run 'build' first.")
+                    continue
+                print_results(index_data, parts[1])                  
 
             case "find":
-                pass
+                if len(parts) < 2:
+                    print("Please provide a word to find.")
+                    continue    
+                if index_data is None:
+                    print("No index found. Please run 'build' first.")
+                    continue
+
+                query = " ".join(parts[1:])
+                results = find_word(index_data, query)
+                if results:
+                    print(f"Pages containing '{query}':")
+                    for url in results:
+                        print(f"-   {url}")
 
             case "quit":
                 print("Exiting search tool.")

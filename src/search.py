@@ -1,0 +1,28 @@
+def print_results(index_data, query):
+    query = query.lower()
+    if query not in index_data:
+        print(f"No results found for '{query}'.")
+        return None
+
+    results = index_data[query]
+    for url, stats in results.items():
+        print(f"URL: {url}")
+        print(f"    Frequency: {stats['frequency']}")
+        print(f"    Positions: {stats['positions']}")
+
+def find_word(index_data, query):
+    query = query.lower().split()
+    for word in query:
+        if word not in index_data:
+            print(f"No results found for '{word}'.")
+            return None
+        
+    results = set(index_data[query[0]].keys())
+    
+    for word in query[1:]:
+        results &= set(index_data[word].keys())
+    if not results:
+        print(f"No pages found containing all search terms.")
+        return None        
+
+    return results        
