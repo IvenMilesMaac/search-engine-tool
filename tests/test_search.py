@@ -52,6 +52,16 @@ class TestSearch(unittest.TestCase):
         results = find_word(self.index_data, "good beautiful")
         self.assertIsNone(results)
 
+    def test_find_word_case_insensitivity(self):
+        results = find_word(self.index_data, "WORLD")
+        expected = {
+            "https://quotes.toscrape.com/page/1/",
+            "https://quotes.toscrape.com/page/3/"
+        }
+        self.assertEqual(results, expected)  
+
     def test_print_results_word_nonexistent(self):
         results = print_results(self.index_data, "nonexistent")
         self.assertIsNone(results)
+
+          

@@ -15,6 +15,11 @@ class TestIndexer(unittest.TestCase):
         }
         self.index_data = index(self.pages)
 
+    def test_word_across_pages(self):
+        word = "life"
+        self.assertIn("https://quotes.toscrape.com/page/1/", self.index_data[word])
+        self.assertIn("https://quotes.toscrape.com/page/2/", self.index_data[word])
+
     def test_empty_pages(self):
         empty_pages = {}
         empty_index = index(empty_pages)

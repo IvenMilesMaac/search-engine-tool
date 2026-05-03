@@ -50,6 +50,17 @@ class TestCrawler(unittest.TestCase):
         self.assertEqual(len(result), 2)        
 
     @patch('crawler.requests.get')
+    def test_crawl_returns_text(self, mock_get):
+        mock_response = MagicMock()
+        mock_response.text = self.fake_html_without_next
+        mock_get.return_value = mock_response
+
+        result = crawl("https://quotes.toscrape.com", delay=0)
+        page_text = result["https://quotes.toscrape.com/page/1/"]
+        self.assertIsNotNone(page_text)
+        self.assertGreater(len(page_text), 0)        
+
+    @patch('crawler.requests.get')
     def test_crawl_with_connection_error(self, mock_get):
         mock_get.side_effect = requests.exceptions.ConnectionError
         result = crawl("https://quotes.toscrape.com", delay=0)
