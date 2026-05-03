@@ -12,6 +12,9 @@ def print_results(index_data, query):
 
 def find_word(index_data, query):
     query = query.lower().split()
+    if not query:
+        print("No search terms provided.")
+        return None
     for word in query:
         if word not in index_data:
             print(f"No results found for '{word}'.")
