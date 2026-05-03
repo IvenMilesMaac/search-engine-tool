@@ -8,7 +8,11 @@ def crawl(base_url, delay=6):
 
     while True:
         url = f"{base_url}/page/{page_num}/"
-        response = requests.get(url)
+        try:
+            response = requests.get(url)
+        except requests.RequestException as e:
+            print(f"Error fetching {url}: {e}")
+            break
         soup = BeautifulSoup(response.text, "html.parser")
         text = soup.get_text(separator=" ", strip=True)
 
