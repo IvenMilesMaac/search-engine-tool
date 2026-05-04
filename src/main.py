@@ -6,6 +6,17 @@ BASE_URL = "https://quotes.toscrape.com"
 INDEX_FILEPATH = "data/index.json"
 
 def main():
+    """
+    Runs the command-line interface for the search engine tool.
+
+    Accepts the following commands:
+    - build: Crawls the website and builds the inverted index.
+    - load: Loads the inverted index from the file system.
+    - print: Prints the index entry for a given word.
+    - find: Finds pages containing one or more search terms.
+    - quit: Exits the program.
+    """
+
     index_data = None 
 
     while True:

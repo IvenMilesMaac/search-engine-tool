@@ -1,4 +1,16 @@
 def print_results(index_data, query):
+    """
+    Prints the inverted index entry for a given word, showing each page it appears on
+    along with wits frequency and positions.
+
+    Args:
+        index_data (dict): The inverted index data.
+        query (str): The word to look up in the index.
+
+    Returns:
+        None
+    """
+
     query = query.lower()
     if query not in index_data:
         print(f"No results found for '{query}'.")
@@ -11,6 +23,18 @@ def print_results(index_data, query):
         print(f"    Positions: {stats['positions']}")
 
 def find_word(index_data, query):
+    """
+    Searches for pages containing all words contained in the query and returns a set of URLs where they appear.
+
+    Args:
+        index_data (dict): The inverted index data.
+        query (str): The words to search for across the inverted index.
+
+    Returns:
+        set: A set of URLs where the search terms appear.
+        None: If no results are found or if the query is empty. 
+    """
+
     query = query.lower().split()
     if not query:
         print("No search terms provided.")

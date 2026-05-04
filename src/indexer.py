@@ -1,6 +1,17 @@
 import json
 
 def index(pages):
+    """
+    Index the text content of html pages.
+
+    Args:
+        pages (dict): A dictionary mapping page URLs to their text content.
+
+    Returns:
+        dict: An inverted index mapping words to their occurrences across pages, 
+        including frequency and positions for each page.
+    """
+
     index_data = {}
 
     for url, text in pages.items():

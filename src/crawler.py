@@ -3,6 +3,17 @@ import time
 from bs4 import BeautifulSoup
 
 def crawl(base_url, delay=6):
+    """
+    Crawl all the pages of a website and returns their text content.
+    
+    Args:
+        base_url (str): The base URL of the website to crawl.
+        delay (int): The delay in seconds between each request.
+
+    Returns:
+        dict: A dictionary mapping page URLs to their text content.
+    """
+    
     pages = {}
     page_num = 1
 
