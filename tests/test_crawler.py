@@ -8,6 +8,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 from crawler import crawl
 
 class TestCrawler(unittest.TestCase):
+
+    """
+    Tests the crawler module for correctness and edge cases,
+    using mocked HTTP requests to avoid hitting the real website during testing.   
+    """
+
     def setUp(self):
         self.fake_html_with_next = """
         <html>

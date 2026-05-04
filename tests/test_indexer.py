@@ -7,6 +7,12 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
 from indexer import index, save_index, load_index
 
 class TestIndexer(unittest.TestCase):
+
+    """
+    Tests the indexer module for correctness and edge cases,
+    using mock page data to simulate crawler output.  
+    """
+
     def setUp(self):
         self.pages = {
             "https://quotes.toscrape.com/page/1/": "The world is good and life is good",

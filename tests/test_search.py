@@ -6,6 +6,12 @@ sys.path.append(os.path.join(os.path.dirname(__file__), '..', 'src'))
 from search import print_results, find_word
 
 class TestSearch(unittest.TestCase):
+
+    """
+    Tests the search module for correctness and edge cases,
+    using a mock inverted index.  
+    """
+
     def setUp(self):
         self.index_data = {
             "world": {
