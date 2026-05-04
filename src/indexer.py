@@ -29,9 +29,30 @@ def index(pages):
     return index_data
 
 def save_index(index_data, filepath):
+    """
+    Saves the index data to a JSON file on disk. 
+
+    Args:
+        index_data (dict): The index data to save.
+        filepath (str): The path to the save location.
+
+    Returns:
+        None         
+    """
+
     with open(filepath, "w") as f:
         json.dump(index_data, f, indent=4)
 
 def load_index(filepath):
+    """
+    Loads the index data from a JSON file on disk.
+
+    Args:
+        filepath (str): The path to the index file.
+
+    Returns:
+        dict: The inverted index laoded from the JSON file.    
+    """
+
     with open(filepath, "r") as f:
         return json.load(f)        
