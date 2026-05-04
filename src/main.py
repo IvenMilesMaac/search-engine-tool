@@ -48,7 +48,7 @@ def main():
                     print("Please provide a word to print.")
                     continue
                 if index_data is None:
-                    print("No index found. Please run 'build' first.")
+                    print("No index found. Please run 'build' or 'load' first.")
                     continue
                 print_results(index_data, parts[1])                  
 
@@ -57,7 +57,7 @@ def main():
                     print("Please provide a word to find.")
                     continue    
                 if index_data is None:
-                    print("No index found. Please run 'build' first.")
+                    print("No index found. Please run 'build' or 'load' first.")
                     continue
 
                 query = " ".join(parts[1:])
